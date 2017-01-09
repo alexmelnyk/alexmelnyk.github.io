@@ -14,7 +14,7 @@
         })
         .directive('list', function () {
             return{
-                templateUrl: 'templates/task-list.template.html'
+                templateUrl: 'templates/test-list.template.html'
             };
         })
 
