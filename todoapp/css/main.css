@@ -1,0 +1,60 @@
+/* line 1, ../scss/main.scss */
+body {
+  background: #eee;
+}
+
+/* line 8, ../scss/main.scss */
+.task-list .collection .collection-item .btn {
+  padding: 0;
+  height: auto;
+  color: #26a69a;
+  background: none !important;
+  box-shadow: none;
+}
+/* line 15, ../scss/main.scss */
+.task-list .collection .collection-item .replay {
+  display: none;
+  cursor: pointer;
+}
+/* line 19, ../scss/main.scss */
+.task-list .collection .collection-item .done {
+  cursor: pointer;
+}
+/* line 22, ../scss/main.scss */
+.task-list .collection .collection-item.done {
+  color: #eee;
+  text-decoration: line-through;
+}
+/* line 25, ../scss/main.scss */
+.task-list .collection .collection-item.done .done {
+  display: none;
+}
+/* line 28, ../scss/main.scss */
+.task-list .collection .collection-item.done .replay {
+  display: block;
+}
+/* line 34, ../scss/main.scss */
+.task-list--add {
+  margin-top: 20px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height, .5s, ease;
+  -moz-transition: max-height, 0.5s, ease;
+  -ms-transition: max-height, 0.5s, ease;
+  -o-transition: max-height, 0.5s, ease;
+  transition: max-height, 0.5s, ease;
+}
+/* line 43, ../scss/main.scss */
+.task-list--add label {
+  display: block;
+}
+/* line 46, ../scss/main.scss */
+.task-list--add.show {
+  max-height: 700px;
+}
+/* line 49, ../scss/main.scss */
+.task-list--add .error {
+  display: inline-block;
+  margin-left: 20px;
+  color: red;
+}

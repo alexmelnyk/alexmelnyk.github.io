@@ -1,0 +1,55 @@
+body{
+	background: #eee;
+}
+
+.task-list{
+	.collection{
+		.collection-item{
+			.btn{
+				padding: 0;
+				height: auto;
+				color: #26a69a;
+				background: none !important;
+				box-shadow: none;
+			}
+			.replay{
+				display: none;
+				cursor: pointer;
+			}
+			.done{
+				cursor: pointer;
+			}
+			&.done{
+				color: #eee;
+				text-decoration: line-through;
+				.done{
+					display: none;
+				}
+				.replay{
+					display: block;
+				}
+			}
+		}
+	}
+	&--add{
+		margin-top: 20px;
+		max-height: 0;
+		overflow: hidden;
+		-webkit-transition: max-height, .5s, ease;
+		-moz-transition: max-height, .5s, ease ;
+		-ms-transition: max-height, .5s, ease ;
+		-o-transition: max-height, .5s, ease ;
+		transition: max-height, .5s, ease ;
+		label{
+			display: block;
+		}
+		&.show{
+			max-height: 700px;
+		}
+		.error{
+			display: inline-block;
+			margin-left: 20px;
+			color: red;
+		}
+	}
+}
