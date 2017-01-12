@@ -58,3 +58,19 @@ body {
   margin-left: 20px;
   color: red;
 }
+
+/* line 57, ../scss/main.scss */
+.task-editor {
+  margin-bottom: 30px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height,.3s,ease;
+  -moz-transition: max-height, 0.3s, ease;
+  -ms-transition: max-height, 0.3s, ease;
+  -o-transition: max-height, 0.3s, ease;
+  transition: max-height, 0.3s, ease;
+}
+/* line 66, ../scss/main.scss */
+.task-editor.show {
+  max-height: 500px;
+}

@@ -27,7 +27,8 @@ app.component('taskList', {
             }
         };
         this.setTaskDescription = function(task){
-            self.getData.task = task;
+            var index = self.tasks.indexOf(task);
+            self.getData.taskIndex = index;
         };
         this.showAddition = function () {
             if (self.addTaskShow == false){
@@ -50,7 +51,20 @@ app.component('taskList', {
 app.component('taskDetail', {
     templateUrl: 'templates/task-detail.template.html',
     controller: function(getData){
+        var self = this;
         this.getData = getData;
+
+        this.tasks = this.getData.getFromStorage();
+
+        this.editor = false;
+
+        this.showEditor = function(){
+            if (self.editor == false){
+                self.editor = true;
+            } else {
+                self.editor = false;
+            }
+        }
     }
 });
 
