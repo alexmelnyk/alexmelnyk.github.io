@@ -29,6 +29,19 @@ body{
 					display: block;
 				}
 			}
+			.inner{
+				position: relative;
+			}
+			.important{
+				position: absolute;
+				top: -2px;
+				left: -4%;
+				cursor: pointer;
+				color: #eee;
+				&.active{
+					color: #FFC300;
+				}
+			}
 		}
 	}
 	&--add{
@@ -51,6 +64,10 @@ body{
 			margin-left: 20px;
 			color: red;
 		}
+	}
+	.select{
+		margin-bottom: 15px;
+		display: block;
 	}
 }
 

@@ -20,7 +20,9 @@
             description:
             <input type="text" ng-model="$ctrl.tasks[$ctrl.getData.taskIndex].description">
         </label>
-        <button class="waves-effect waves-light btn">
+        <button class="waves-effect waves-light btn"
+                ng-click="$ctrl.saveTask()"
+                ng-class="{disabled: $ctrl.tasks[$ctrl.getData.taskIndex].title.length < 3 || $ctrl.tasks[$ctrl.getData.taskIndex].description.length < 3}">
             <i class="material-icons left">thumb_up</i>
             save
         </button>

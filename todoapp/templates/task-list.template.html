@@ -4,9 +4,12 @@
             <h4>Task List</h4>
         </li>
         <li class="collection-item"
-            ng-repeat="task in $ctrl.tasks track by $index"
+            ng-repeat="task in $ctrl.tasks | filter:$ctrl.filterBy track by $index"
             ng-class="{done: task.done == true}">
-            <div>
+            <div class="inner">
+                <i class="material-icons important"
+                   ng-class="{active: task.important == true}"
+                   ng-click="$ctrl.setImportant(task)">star</i>
                 {{task.title}}
                 <a href="#!/tasks/task"
                    class="secondary-content"
@@ -16,11 +19,18 @@
                 <button ng-click="$ctrl.deleteTask(task)"
                         class="secondary-content material-icons btn"
                         ng-class="{disabled: !task.done}">delete</button>
-                <i ng-click="$ctrl.isDone(task)" class="secondary-content material-icons done">done</i>
-                <i ng-click="$ctrl.isReplay(task)" class="secondary-content material-icons replay">replay</i>
+                <i ng-click="$ctrl.setDone(task)" class="secondary-content material-icons done">done</i>
+                <i ng-click="$ctrl.setDone(task)" class="secondary-content material-icons replay">replay</i>
             </div>
         </li>
     </ul>
+
+    <select class='select' ng-model="$ctrl.filterBy">
+        <option value="" selected disabled>Sort by</option>
+        <option value="all">all</option>
+        <option value="important">important</option>
+        <option value="done">done</option>
+    </select>
 
     <button class="waves-effect waves-light btn"
             ng-click="$ctrl.showAddition()">

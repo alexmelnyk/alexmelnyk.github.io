@@ -33,7 +33,23 @@ body {
 .task-list .collection .collection-item.done .replay {
   display: block;
 }
-/* line 34, ../scss/main.scss */
+/* line 32, ../scss/main.scss */
+.task-list .collection .collection-item .inner {
+  position: relative;
+}
+/* line 35, ../scss/main.scss */
+.task-list .collection .collection-item .important {
+  position: absolute;
+  top: -2px;
+  left: -4%;
+  cursor: pointer;
+  color: #eee;
+}
+/* line 41, ../scss/main.scss */
+.task-list .collection .collection-item .important.active {
+  color: #FFC300;
+}
+/* line 47, ../scss/main.scss */
 .task-list--add {
   margin-top: 20px;
   max-height: 0;
@@ -44,22 +60,27 @@ body {
   -o-transition: max-height, 0.5s, ease;
   transition: max-height, 0.5s, ease;
 }
-/* line 43, ../scss/main.scss */
+/* line 56, ../scss/main.scss */
 .task-list--add label {
   display: block;
 }
-/* line 46, ../scss/main.scss */
+/* line 59, ../scss/main.scss */
 .task-list--add.show {
   max-height: 700px;
 }
-/* line 49, ../scss/main.scss */
+/* line 62, ../scss/main.scss */
 .task-list--add .error {
   display: inline-block;
   margin-left: 20px;
   color: red;
 }
+/* line 68, ../scss/main.scss */
+.task-list .select {
+  margin-bottom: 15px;
+  display: block;
+}
 
-/* line 57, ../scss/main.scss */
+/* line 74, ../scss/main.scss */
 .task-editor {
   margin-bottom: 30px;
   max-height: 0;
@@ -70,7 +91,7 @@ body {
   -o-transition: max-height, 0.3s, ease;
   transition: max-height, 0.3s, ease;
 }
-/* line 66, ../scss/main.scss */
+/* line 83, ../scss/main.scss */
 .task-editor.show {
   max-height: 500px;
 }

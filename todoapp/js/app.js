@@ -5,14 +5,15 @@ var app = angular.module('app',['ngRoute']);
 app.component('taskList', {
     templateUrl: 'templates/task-list.template.html',
     controller: function(getData){
-        self = this;
+        var self = this;
         this.getData = getData;
         this.getData.setToStorage();
         this.tasks = this.getData.getFromStorage();
         this.addTaskShow = false;
         this.additionTask = {
             "title": "",
-            "description": ""
+            "description": "",
+            "important": false
         };
         this.deleteTask = function(task){
             self.tasks.splice(self.tasks.indexOf(task), 1);
@@ -23,7 +24,7 @@ app.component('taskList', {
             self.getData.setToStorage(self.tasks);
             self.additionTask = {
                 "title": "",
-                "description": ""
+                "description": "",
             }
         };
         this.setTaskDescription = function(task){
@@ -31,20 +32,24 @@ app.component('taskList', {
             self.getData.taskIndex = index;
         };
         this.showAddition = function () {
-            if (self.addTaskShow == false){
-                self.addTaskShow = true;
+            self.addTaskShow = (self.addTaskShow == false) ? true : false;
+        };
+        this.setDone = function(task){
+            if (task.done){
+                delete task.done;
             } else {
-                self.addTaskShow = false;
+                task.done = true;
             }
-        };
-        this.isDone = function(task){
-            task.done = true;
             self.getData.setToStorage(self.tasks);
         };
-        this.isReplay = function(task){
-            delete task.done;
+        this.setImportant = function(task){
+            if (task.important){
+                delete task.important;
+            } else {
+                task.important = true;
+            }
             self.getData.setToStorage(self.tasks);
-        };
+        }
     }
 });
 
@@ -59,11 +64,11 @@ app.component('taskDetail', {
         this.editor = false;
 
         this.showEditor = function(){
-            if (self.editor == false){
-                self.editor = true;
-            } else {
-                self.editor = false;
-            }
+            self.editor = (self.editor == false) ? true : false;
+        };
+
+        this.saveTask = function(){
+            self.getData.setToStorage(self.tasks);
         }
     }
 });
@@ -91,6 +96,39 @@ app.service('getData', function(){
             }
         }
     }
+});
+
+app.filter('filter', function(){
+    return function (items, filter) {
+        var filtered = [];
+
+        switch(filter){
+            case 'all':
+                filtered = items;
+                break;
+            case 'important':
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    if (item.important == true) {
+                        filtered.push(item);
+                    }
+                }
+                break;
+            case 'done':
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    if (item.done == true) {
+                        filtered.push(item);
+                    }
+                }
+                break;
+            default:
+                filtered = items;
+                break;
+        }
+
+        return filtered;
+    };
 });
 
 })();
