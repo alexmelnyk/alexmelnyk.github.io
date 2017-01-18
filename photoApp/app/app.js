@@ -25,7 +25,7 @@
 			};
 
 			this.addItems = function(){
-				if (self.enableScroll){
+				if (self.defaults.enableScroll){
 					for (i = 0; i < self.defaults.defaultScrollNumber; i++){
 						self.defaults.imgIndex++;
 						self.imgUrls.push('https://unsplash.it/300/250?image=' + self.defaults.imgIndex );		
