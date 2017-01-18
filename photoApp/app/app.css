@@ -1,0 +1,25 @@
+*{
+	box-sizing: border-box;
+}
+
+.input-container{
+	width: 900px;
+	position: fixed;
+}
+
+.input-container input{
+	display: block;
+}
+
+.input-container label input{
+	display: inline-block;
+}
+
+.container{
+	margin: 0 auto;
+	width: 900px;
+}
+.container .img-wrapper{
+	float: left;
+	cursor: pointer;
+}
