@@ -1,0 +1,42 @@
+<section class="edit main">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="table-header">
+                    <h3 id="edit">{{$ctrl.grid.name}} detail</h3>
+                    <a ng-href="#!gridlist/{{$ctrl.grid.id}}"
+                       class="btn right">
+                        back to list
+                    </a>
+                </div>
+                <div class="edit-params">
+                    <input type="text" ng-model="$ctrl.grid.name">
+                </div>
+                <table class="table">
+                    <th ng-repeat="col in $ctrl.grid.cols"
+                        ng-style="{width: 100 / $ctrl.grid.cols.length + '%'}">
+                        {{col}}
+                    </th>
+                    <tr ng-repeat="(i, row) in $ctrl.grid.rows track by $index">
+                        <td ng-style="{width: 100 / $ctrl.grid.cols.length + '%'}"
+                            ng-repeat="(key, value) in row">
+                            <input type="text" ng-model="$ctrl.grid.rows[i][key]">
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn"
+                        ng-click="$ctrl.changeRows('add')">
+                    add row
+                </button>
+                <button class="btn"
+                        ng-click="$ctrl.changeRows('remove')">
+                    remove row
+                </button>
+                <button class="btn"
+                        ng-click="$ctrl.grids.saveGrid($ctrl.grid.id, $ctrl.grid)">
+                    save
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

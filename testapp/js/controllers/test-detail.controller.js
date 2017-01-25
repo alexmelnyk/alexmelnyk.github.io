@@ -34,7 +34,7 @@
             $scope.isDone = function(questionId){
                 $scope.done[questionId] = true;
                 $scope.testData.done = $scope.done;
-                $scope.completeLength++
+                $scope.completeLength++;
                 if ($scope.completeLength >= $scope.questionLength){
                     $scope.testData.complete = true;
                 }
@@ -48,6 +48,7 @@
                         //this part check if object invalid
                         //checking by boolean AND
                         if (object.id == answer.id){
+                            console.log('se');
                             object.status = true; //set status to default if user changed mind
                             object.answers[id - 1] = answer.key[$scope.answers[id]];
                             for (var i = 0; i < $scope.questionLength; i++){
