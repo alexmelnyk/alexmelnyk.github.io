@@ -1,6 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class App extends React.Component{
+import { setMain } from '../actions/setMain'; 
+
+const mapStateToProps = (state) => {
+    return {
+        main: state.main
+    }
+};
+
+const mapDispatchToProps = (dispatch) => { 
+    return {
+        setMain: (main) => {
+            dispatch(setMain(main));
+        }
+    }
+};
+
+
+export class App extends React.Component{
 
     constructor(props){
         super(props);
@@ -11,10 +29,18 @@ export default class App extends React.Component{
         return (
 
             <div className = 'react-app'>
-                <h1>Hello!</h1>
+                <h1>Hellffo!</h1>
+                <p>{this.props.main}</p>
+
+                <button onClick = {() => this.props.setMain(2) }>ololo</button>
             </div>
 
         )
     }
 
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App)
