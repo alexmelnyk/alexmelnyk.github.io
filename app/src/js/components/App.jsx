@@ -2,14 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Button from './Button';
+import Progress from './Progress';
 
-import { setMain } from '../actions/setMain'; 
 import { setIncrease } from '../actions/setIncrease';
 import { setDecrease } from '../actions/setDecrease';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-injectTapEventPlugin();
 
 const mapStateToProps = (state) => {
     return {
@@ -19,9 +16,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => { 
     return {
-        setMain: (main) => {
-            dispatch(setMain(main));
-        },
         setIncrease: () => {
             dispatch(setIncrease());
         },
@@ -43,8 +37,10 @@ export class App extends React.Component{
         return (
 
             <div className = 'react-app'>
-                <h1>Hellffo!</h1>
+                <h1>Hello!</h1>
                 <p>{this.props.main}</p>
+
+                <Progress/>
 
                 <Button label='increase' onClick={this.props.setIncrease}/>
                 <Button label='decrease' onClick={this.props.setDecrease}/>

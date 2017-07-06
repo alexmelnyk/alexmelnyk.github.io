@@ -4,6 +4,10 @@ import { Provider } from 'react-redux';
 import Store from './store'; 
 
 import App from './components/App';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
  
 class AppContainer extends React.Component {
     render() {
