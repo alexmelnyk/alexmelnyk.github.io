@@ -58,7 +58,7 @@ export class CustomTable extends React.Component{
     }
 
     componentWillMount(){
-        this.props.requestTableData('http://localhost:8000/data.json', {});
+        this.props.requestTableData('/data.json', {});
     }
 
     render(){
