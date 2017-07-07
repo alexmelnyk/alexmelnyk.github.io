@@ -8,51 +8,32 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
+import { connect } from 'react-redux';
+
+import { requestTableData } from '../actions/requestTableData';
+
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const tableData = [
-  {
-    id: 1,  
-    name: 'John Smith',
-    status: 'Employed',
-  },
-  {
-    id: 2,  
-    name: 'Randal White',
-    status: 'Unemployed',
-  },
-  {
-    id: 3,  
-    name: 'Stephanie Sanders',
-    status: 'Employed',
-  },
-  {
-    id: 4,  
-    name: 'Steve Brown',
-    status: 'Employed',
-  },
-  {
-    id: 5,  
-    name: 'Joyce Whitten',
-    status: 'Employed',
-  },
-  {
-    id: 6,  
-    name: 'Samuel Roberts',
-    status: 'Employed',
-  },
-  {
-    id: 7,  
-    name: 'Adam Moore',
-    status: 'Employed',
-  },
-];
+const mapStateToProps = (state) => {
+    return {
+        tableData: state.tableData
+    }
+};
 
-export default class CustomTable extends React.Component{
+const mapDispatchToProps = (dispatch) => {  
+    return {
+        requestTableData: (url, body) => {
+            dispatch(requestTableData(url, body))
+        }
+    }
+};
+
+
+export class CustomTable extends React.Component{
 
     constructor(props){
-        super(props);
+        super(props); 
         this.getTableRows = this.getTableRows.bind(this);
     }
 
@@ -60,9 +41,9 @@ export default class CustomTable extends React.Component{
         return { muiTheme: getMuiTheme(baseTheme) };
     }
 
-    getTableRows(){
+    getTableRows(tableData){
 
-        return tableData.map((row) => {
+        return tableData.map((row) => { 
 
             return(
                 <TableRow key={row.id}>
@@ -76,6 +57,10 @@ export default class CustomTable extends React.Component{
 
     }
 
+    componentWillMount(){
+        this.props.requestTableData('http://localhost:8000/data.json', {});
+    }
+
     render(){
         return(
             <Table>
@@ -87,7 +72,7 @@ export default class CustomTable extends React.Component{
                 </TableRow>
                 </TableHeader>
                 <TableBody>  
-                    {this.getTableRows()}
+                    {this.getTableRows(this.props.tableData.data)} 
                 </TableBody>
             </Table>            
         )
@@ -98,3 +83,8 @@ export default class CustomTable extends React.Component{
 CustomTable.childContextTypes = {
     muiTheme: React.PropTypes.object.isRequired,
 };
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CustomTable)
