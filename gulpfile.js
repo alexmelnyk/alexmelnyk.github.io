@@ -9,7 +9,7 @@ let babelify = require('babelify');
 let source = require('vinyl-source-stream');
 let es2015 = require('babel-preset-es2015');
 let react = require('babel-preset-react');
-
+let minify = require('gulp-minify');
 
 let path = 'app/';
 
@@ -59,14 +59,22 @@ gulp.task('build', () => {
         .pipe(gulp.dest(path + 'dist/js'));
 });
 
+gulp.task('compress', function() {
+  gulp.src(path + 'dist/js/*.js')
+    .pipe(minify({
+        ext:{
+            min:'.min.js'
+        },
+        ignoreFiles: ['.combo.js', '-min.js']
+    }))
+    .pipe(gulp.dest(path + 'dist/js'))
+});
 
 gulp.task('watch', () => {
   gulp.src('')
     .pipe(server({
       livereload: true,
-      defaultFile: 'index.html',
-      directoryListing: true,
-      open: true
+      defaultFile: 'index.html'
     }));
   gulp.watch(path + 'src/scss/**/*.scss', ['sass']);
   gulp.watch(path + 'src/js/**/*.jsx', ['build']);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Button from './Button';
 import Progress from './Progress';
+import CustomTable from './CustomTable';
 
 import { setIncrease } from '../actions/setIncrease';
 import { setDecrease } from '../actions/setDecrease';
@@ -40,10 +41,12 @@ export class App extends React.Component{
                 <h1>Hello!</h1>
                 <p>{this.props.main}</p>
 
-                <Progress/>
+                <Progress/> 
 
                 <Button label='increase' onClick={this.props.setIncrease}/>
                 <Button label='decrease' onClick={this.props.setDecrease}/>
+
+                <CustomTable/>
 
             </div>
 
