@@ -1,5 +1,0 @@
-export const SET_MAIN = 'SET_MAIN';
-export const SET_INCREASE = 'SET_INCREASE';
-export const SET_DECREASE = 'SET_DECREASE';
-export const REQUEST_TABLE_DATA = 'REQUEST_TABLE_DATA';
-export const RECEIVE_TABLE_DATA = 'RECEIVE_TABLE_DATA';
