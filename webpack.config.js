@@ -1,27 +1,30 @@
-const webpack = require('webpack');
 const path = require('path');
-const loaders = require('./webpack/loaders');
 
-
-const config = {
-    context: __dirname + "/app/",
-    entry: {
-        app: ["./index.jsx"]
-    },
-    //OUTPUT
+module.exports = {
+    entry: ['./src/index.js'],
+    devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, "./build"),
-        publicPath: "/",
-        filename: "[name].bundle.js",
-        chunkFilename: "[id].bundle.js"
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
-    resolve: {
-        extensions: [".js", ".jsx"]
+    devServer: {
+        port: 8000,
+        hot: true,
+        contentBase: './dist',
+        historyApiFallback: true
     },
-    //LOADERS
     module: {
-        loaders: loaders
+        loaders: [
+            { 
+                test: /\.js$/, 
+                loader: 'babel-loader', 
+                exclude: /node_modules/ 
+            },
+            { 
+                test: /\.jsx$/, 
+                loader: 'babel-loader', 
+                exclude: /node_modules/ 
+            }
+        ]
     }
 };
-
-module.exports = config;
