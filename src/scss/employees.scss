@@ -1,0 +1,43 @@
+.employees {
+    &--sort {
+        button {
+            margin: 0 5px;
+        }
+    }
+
+    &--list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .employee {
+            text-align: left;
+            width: 50%;
+            margin-bottom: 15px;
+
+            &--avatar,
+            &--info {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            &--avatar {
+                max-width: 100px;
+                margin-right: 15px;
+            }
+        }
+
+        @media screen and (max-width: 768px){
+            display: block;
+
+            .employee {
+                margin: 0 auto 15px;
+                width: 320px;
+
+                &--avatar {
+                    max-width: 50px;
+                }
+            }
+        }
+    }
+}

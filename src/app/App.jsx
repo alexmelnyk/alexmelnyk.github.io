@@ -1,30 +1,37 @@
 import React from 'react';
 
-import Store from './store';
+import { 
+    Router, 
+    Switch, 
+    Route, 
+    Redirect 
+} from 'react-router-dom';
+
 import { Provider } from 'react-redux';
+import Store from './store';
 
-import { mock } from './mock.js';
-import { setAsset } from './appActions';
+import Employees from '../employees/Employees.jsx';
+import About from '../about/About.jsx';
 
-let assetArray = [];
-mock.subscribe(val => {
-    assetArray.push(val);
+import createHistory from 'history/createBrowserHistory';
 
-    if (assetArray.length >= 400) {
-        Store.dispatch(setAsset(assetArray));
-        assetArray = [];
-    }
-
-});
-
-import AssetsComponent from '../components/AssetsComponent.jsx';
+const history = createHistory({});
 
 export default class App extends React.Component {
+
     render() {
         return (
-            <Provider store={Store}>
-                <AssetsComponent/>
-            </Provider>    
+            <div className='app-container'>
+                <Provider store={Store}>
+                    <Router history={history}>
+                        <Switch>
+                            <Route path='/employees' component={Employees} />
+                            <Route path='/about' component={About} />
+                            <Redirect from="/" to="/employees" />
+                        </Switch>
+                    </Router>
+                </Provider>
+            </div>
         )
     }
-}  
+}

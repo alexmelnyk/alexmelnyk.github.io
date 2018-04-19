@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['./src/index.js'],
+    entry: ['./src/index.jsx', './src/scss/index.scss'],
     devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
@@ -15,6 +15,10 @@ module.exports = {
     },
     module: {
         loaders: [
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            },
             { 
                 test: /\.js$/, 
                 loader: 'babel-loader', 

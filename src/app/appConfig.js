@@ -1,6 +1,5 @@
-export const initialState = {
-    assets: [],
-    sortBy: 'default',
-    filterBy: 'default',
-    filterName: 'default'
+export const defaultState = {
+    employees: {
+        data: []
+    }
 };
